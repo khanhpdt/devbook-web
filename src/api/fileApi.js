@@ -1,9 +1,14 @@
 import axios from "axios"
+import _ from "lodash/collection"
 
 function upload(files) {
   if (files && files.length > 0) {
     const data = new FormData()
-    data.append("file", files[0])
+
+    _.forEach(files, (f) => {
+      data.append("files", f, f.name)
+    })
+
     axios
       .post("http://localhost:8081/upload", data, {
         headers: {
