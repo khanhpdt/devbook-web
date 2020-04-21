@@ -1,10 +1,18 @@
 import React from "react"
 import { useDropzone } from "react-dropzone"
+import _ from "lodash/collection"
+
+function upload(files) {
+  console.log("click upload")
+  files.forEach((element) => {
+    console.log(element.name)
+  })
+}
 
 function FileDrop() {
   const { acceptedFiles, getRootProps, getInputProps, isDragActive } = useDropzone()
 
-  const fileItems = acceptedFiles.map((f) => {
+  const fileItems = _.map(acceptedFiles, (f) => {
     return (
       <li key={f.path}>
         {f.name} - {Math.round(f.size / 1000)} KB
@@ -24,11 +32,11 @@ function FileDrop() {
       </div>
 
       <div>
-        <button>Upload</button>
+        <ul>{fileItems}</ul>
       </div>
 
       <div>
-        <ul>{fileItems}</ul>
+        <button onClick={() => upload(acceptedFiles)}>Upload</button>
       </div>
     </div>
   )
