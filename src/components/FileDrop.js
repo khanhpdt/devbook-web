@@ -1,12 +1,10 @@
 import React from "react"
 import { useDropzone } from "react-dropzone"
 import _ from "lodash/collection"
+import * as fileApi from "../api/fileApi"
 
-function upload(files) {
-  console.log("click upload")
-  files.forEach((element) => {
-    console.log(element.name)
-  })
+function upload(acceptedFiles) {
+  fileApi.upload(acceptedFiles)
 }
 
 function FileDrop() {
