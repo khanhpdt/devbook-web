@@ -2,6 +2,7 @@ import React from "react"
 import { useDropzone } from "react-dropzone"
 import _ from "lodash/collection"
 import * as fileApi from "../api/fileApi"
+import styles from "./FileDrop.module.scss"
 
 function upload(acceptedFiles) {
   fileApi.upload(acceptedFiles)
@@ -12,29 +13,34 @@ function FileDrop() {
 
   const fileItems = _.map(acceptedFiles, (f) => {
     return (
-      <li key={f.path}>
+      <div className="panel-block">
         {f.name} - {Math.round(f.size / 1000)} KB
-      </li>
+      </div>
     )
   })
 
   return (
-    <div>
-      <div {...getRootProps()}>
+    <div className="panel is-primary">
+      <p className="panel-heading">Upload Files</p>
+
+      <div className={"panel-block has-text-centered " + styles.dropArea} {...getRootProps()}>
         <input {...getInputProps()} />
-        {isDragActive ? (
-          <p>Drop the files here ...</p>
-        ) : (
-          <p>Drag 'n' drop some files here, or click to select files</p>
-        )}
+        <p>
+          {isDragActive
+            ? "Drop the files here ..."
+            : "Drag 'n' drop some files here, or click to select files"}
+        </p>
       </div>
 
-      <div>
-        <ul>{fileItems}</ul>
-      </div>
+      {fileItems}
 
-      <div>
-        <button onClick={() => upload(acceptedFiles)}>Upload</button>
+      <div class="panel-block">
+        <button
+          class="button is-link is-outlined is-fullwidth"
+          onClick={() => upload(acceptedFiles)}
+        >
+          Upload
+        </button>
       </div>
     </div>
   )
