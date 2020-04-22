@@ -1,11 +1,11 @@
 import React from "react"
 import "./App.scss"
-import FileDrop from "./components/FileDrop"
+import FileDropModal from "./components/FileDropModal"
 
 function App() {
   return (
     <div className="container">
-      <FileDrop />
+      <FileDropModal />
     </div>
   )
 }
