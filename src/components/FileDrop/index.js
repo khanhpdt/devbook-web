@@ -1,7 +1,7 @@
 import React from "react"
 import { useDropzone } from "react-dropzone"
 import _ from "lodash/collection"
-import * as fileApi from "../api/fileApi"
+import * as fileApi from "../../api/fileApi"
 import styles from "./FileDrop.module.scss"
 
 function upload(acceptedFiles) {
