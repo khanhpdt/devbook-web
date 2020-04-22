@@ -1,7 +1,7 @@
 import React from "react"
 import "./App.scss"
-import FileDropModal from "./components/FileDropModal"
-import NavBar from "./components/NavBar"
+import FileDropModal from "./components/FileDropModal/container"
+import NavBar from "./components/NavBar/container"
 
 function App() {
   return (

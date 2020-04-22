@@ -20,6 +20,10 @@ export default function FileDropModal(props) {
     )
   })
 
+  const close = () => {
+    props.close()
+  }
+
   const isActiveClass = props.isActive ? "is-active" : ""
 
   return (
@@ -28,7 +32,7 @@ export default function FileDropModal(props) {
       <div className="modal-card">
         <header className="modal-card-head">
           <p className="modal-card-title">Upload Files</p>
-          <button className="delete" aria-label="close"></button>
+          <button className="delete" aria-label="close" onClick={() => close()}></button>
         </header>
         <section className="modal-card-body">
           <div className={"has-text-centered " + styles.dropArea} {...getRootProps()}>
@@ -46,7 +50,9 @@ export default function FileDropModal(props) {
           <button className="button is-success" onClick={() => upload(acceptedFiles)}>
             Upload
           </button>
-          <button className="button">Cancel</button>
+          <button className="button" onClick={() => close()}>
+            Cancel
+          </button>
         </footer>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { CLICK_UPLOAD } from "../actions/navBarActions"
+import { CLOSE } from "../actions/fileDropModalActions"
 
 const initialState = {
   isActive: false,
@@ -11,6 +12,12 @@ export default function (state = initialState, action) {
         ...state,
         isActive: true,
       }
+    case CLOSE: {
+      return {
+        ...state,
+        isActive: false,
+      }
+    }
     default:
       return state
   }
