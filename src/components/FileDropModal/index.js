@@ -21,14 +21,14 @@ export default function FileDropModal() {
   })
 
   return (
-    <div class="modal">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head">
-          <p class="modal-card-title">Upload Files</p>
-          <button class="delete" aria-label="close"></button>
+    <div className="modal">
+      <div className="modal-background"></div>
+      <div className="modal-card">
+        <header className="modal-card-head">
+          <p className="modal-card-title">Upload Files</p>
+          <button className="delete" aria-label="close"></button>
         </header>
-        <section class="modal-card-body">
+        <section className="modal-card-body">
           <div className={"has-text-centered " + styles.dropArea} {...getRootProps()}>
             <input {...getInputProps()} />
             <p>
@@ -40,11 +40,11 @@ export default function FileDropModal() {
 
           {fileItems}
         </section>
-        <footer class="modal-card-foot">
-          <button class="button is-success" onClick={() => upload(acceptedFiles)}>
+        <footer className="modal-card-foot">
+          <button className="button is-success" onClick={() => upload(acceptedFiles)}>
             Upload
           </button>
-          <button class="button">Cancel</button>
+          <button className="button">Cancel</button>
         </footer>
       </div>
     </div>
