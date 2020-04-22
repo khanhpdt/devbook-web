@@ -1,25 +1,11 @@
-import React from "react"
+import { connect } from "react-redux"
+import NavBar from "./component"
+import { clickUpload } from "../../redux/actions/navBarActions"
 
-export default function NavBar() {
-  return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-menu">
-        <div className="navbar-start">
-          <a className="navbar-item" href="/">
-            Home
-          </a>
-        </div>
-
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="buttons">
-              <button className="button is-primary">
-                <strong>Upload</strong>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-  )
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onClickUpload: () => dispatch(clickUpload()),
+  }
 }
+
+export default connect(null, mapDispatchToProps)(NavBar)
