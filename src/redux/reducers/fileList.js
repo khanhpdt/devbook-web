@@ -16,6 +16,9 @@ export default function (state = initialState, action) {
       })
     case ON_START_SUCCESS:
       const p = action.payload
+      if (!p) {
+        return state
+      }
       return Object.assign({}, state, {
         files: p.list,
         nPages: Math.ceil(p.total / N_ITEMS_PER_PAGE),
