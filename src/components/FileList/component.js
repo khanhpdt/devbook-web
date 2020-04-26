@@ -1,9 +1,9 @@
 import React, { useEffect } from "react"
 
-export default function FileList(props) {
+export default function FileList({ onStart }) {
   useEffect(() => {
-    props.onStart()
-  }, [])
+    onStart()
+  }, [onStart])
 
   return <div>File list will appear here.</div>
 }
