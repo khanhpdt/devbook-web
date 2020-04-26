@@ -24,4 +24,8 @@ function upload(files) {
   }
 }
 
-export { upload }
+function fetchFiles() {
+  console.log("API fetchFiles called")
+}
+
+export { upload, fetchFiles }
