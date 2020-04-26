@@ -10,7 +10,7 @@ function upload(files) {
     })
 
     axios
-      .post("http://localhost:8081/upload", data, {
+      .post("http://localhost:8081/files/upload", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

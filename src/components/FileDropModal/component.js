@@ -14,7 +14,7 @@ export default function FileDropModal(props) {
 
   const fileItems = _.map(acceptedFiles, (f) => {
     return (
-      <div className="panel-block">
+      <div className="panel-block" key={f.path}>
         {f.name} - {Math.round(f.size / 1000)} KB
       </div>
     )
