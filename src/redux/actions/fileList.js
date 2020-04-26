@@ -4,8 +4,9 @@ export const onStart = () => ({
 })
 
 export const ON_START_SUCCESS = "fileList/onStartSuccess"
-export const onStartSuccess = () => ({
+export const onStartSuccess = (data) => ({
   type: ON_START_SUCCESS,
+  payload: data,
 })
 
 export const ON_START_FAILED = "fileList/onStartFailed"
