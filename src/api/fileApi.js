@@ -9,7 +9,7 @@ function upload(files) {
       data.append("files", f, f.name)
     })
 
-    axios.post("http://localhost:8081/files/upload", data, {
+    return axios.post("http://localhost:8081/files/upload", data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -23,7 +23,7 @@ function fetchFiles() {
       match_all: {},
     },
   }
-  axios.post("http://localhost:8081/files/search", data, {
+  return axios.post("http://localhost:8081/files/search?page=1&size=10", data, {
     headers: {
       "Content-Type": "application/json",
     },

@@ -7,7 +7,7 @@ function* onStart() {
     yield call(fileApi.fetchFiles)
     yield put(onStartSuccess())
   } catch (err) {
-    console.log("Error: " + err)
+    // console.log("Error: " + err)
     yield put(onStartFailed())
   }
 }
