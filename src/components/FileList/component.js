@@ -7,7 +7,7 @@ export default function FileList({ files, nPages, onStart }) {
     onStart()
   }, [onStart])
 
-  const pagination = files === null ? null : <Pagination />
+  const pagination = files === null ? null : <Pagination currentPage={1} nPages={nPages} />
 
   const fileList = (
     <div className="panel">
@@ -19,7 +19,9 @@ export default function FileList({ files, nPages, onStart }) {
           </a>
         )
       })}
-      <div className="panel-block">{pagination}</div>
+      <div className="panel-block" style={{ justifyContent: "flex-end" }}>
+        {pagination}
+      </div>
     </div>
   )
 
