@@ -4,6 +4,7 @@ import FileList from "./component"
 
 const mapStateToProps = (state) => ({
   files: state.fileList.files,
+  nPages: state.fileList.nPages,
 })
 
 const mapDispatchToProps = (dispatch) => ({

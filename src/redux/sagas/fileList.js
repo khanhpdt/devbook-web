@@ -4,10 +4,9 @@ import * as fileApi from "../../api/fileApi"
 
 function* onStart() {
   try {
-    yield call(fileApi.fetchFiles)
-    yield put(onStartSuccess())
+    const res = yield call(fileApi.fetchFiles)
+    yield put(onStartSuccess(res.data))
   } catch (err) {
-    // console.log("Error: " + err)
     yield put(onStartFailed())
   }
 }

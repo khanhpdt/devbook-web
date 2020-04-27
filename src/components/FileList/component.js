@@ -1,64 +1,27 @@
 import React, { useEffect } from "react"
 import _ from "lodash/collection"
+import Pagination from "../Pagination"
 
-export default function FileList({ files, onStart }) {
+export default function FileList({ files, nPages, onStart }) {
   useEffect(() => {
     onStart()
   }, [onStart])
 
+  const pagination = files === null ? null : <Pagination />
+
   const fileList = (
-    <ul>
+    <div className="panel">
+      <p className="panel-heading">Files</p>
       {_.map(files, (f) => {
-        return <li>{f.name}</li>
+        return (
+          <a className="panel-block" key={f.id}>
+            {f.name}
+          </a>
+        )
       })}
-    </ul>
-  )
-
-  const pagination =
-    files === null ? null : (
-      <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
-        <a class="pagination-previous">Previous</a>
-        <a class="pagination-next">Next page</a>
-        <ul class="pagination-list">
-          <li>
-            <a class="pagination-link" aria-label="Goto page 1">
-              1
-            </a>
-          </li>
-          <li>
-            <span class="pagination-ellipsis">&hellip;</span>
-          </li>
-          <li>
-            <a class="pagination-link" aria-label="Goto page 45">
-              45
-            </a>
-          </li>
-          <li>
-            <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">
-              46
-            </a>
-          </li>
-          <li>
-            <a class="pagination-link" aria-label="Goto page 47">
-              47
-            </a>
-          </li>
-          <li>
-            <span class="pagination-ellipsis">&hellip;</span>
-          </li>
-          <li>
-            <a class="pagination-link" aria-label="Goto page 86">
-              86
-            </a>
-          </li>
-        </ul>
-      </nav>
-    )
-
-  return (
-    <div>
-      {fileList}
-      {pagination}
+      <div className="panel-block">{pagination}</div>
     </div>
   )
+
+  return <div>{fileList}</div>
 }
