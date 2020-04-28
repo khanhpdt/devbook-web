@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import _ from "lodash/collection"
 import Pagination from "../Pagination"
+import { Link } from "react-router-dom"
 
 export default function FileList({ files, nPages, onStart }) {
   useEffect(() => {
@@ -14,9 +15,9 @@ export default function FileList({ files, nPages, onStart }) {
       <p className="panel-heading">Files</p>
       {_.map(files, (f) => {
         return (
-          <a className="panel-block" key={f.id}>
+          <Link className="panel-block" to={`/file/${f.id}`} key={f.id}>
             {f.name}
-          </a>
+          </Link>
         )
       })}
       <div className="panel-block" style={{ justifyContent: "flex-end" }}>

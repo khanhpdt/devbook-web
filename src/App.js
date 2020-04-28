@@ -3,17 +3,20 @@ import "./App.scss"
 import FileDropModal from "./components/FileDropModal/container"
 import NavBar from "./components/NavBar/container"
 import FileList from "./components/FileList/container"
+import { BrowserRouter as Router } from "react-router-dom"
 
 function App() {
   return (
-    <div>
-      <NavBar />
+    <Router>
       <div>
-        <FileList />
+        <NavBar />
+        <div>
+          <FileList />
 
-        <FileDropModal />
+          <FileDropModal />
+        </div>
       </div>
-    </div>
+    </Router>
   )
 }
 
