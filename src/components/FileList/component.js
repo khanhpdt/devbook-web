@@ -8,7 +8,15 @@ export default function FileList({ files, nPages, onStart }) {
     onStart()
   }, [onStart])
 
-  const pagination = files === null ? null : <Pagination currentPage={1} nPages={nPages} />
+  const noFile =
+    files === null || files.length === 0 ? <div className="panel-block">No file.</div> : null
+
+  const pagination =
+    files === null ? null : (
+      <div className="panel-block" style={{ justifyContent: "flex-end" }}>
+        <Pagination currentPage={1} nPages={nPages} />
+      </div>
+    )
 
   const fileList = (
     <div className="panel">
@@ -20,9 +28,8 @@ export default function FileList({ files, nPages, onStart }) {
           </Link>
         )
       })}
-      <div className="panel-block" style={{ justifyContent: "flex-end" }}>
-        {pagination}
-      </div>
+      {noFile}
+      {pagination}
     </div>
   )
 

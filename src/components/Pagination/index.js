@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Pagination({ nPages, currentPage }) {
   if (nPages < 1) {
-    return
+    return null
   }
 
   const isCurrentClass = (p) => (p === currentPage ? "is-current" : "")
@@ -10,7 +10,7 @@ export default function Pagination({ nPages, currentPage }) {
   const pages = []
 
   pages.push(
-    <li>
+    <li key={1}>
       <a className={"pagination-link " + isCurrentClass(1)} aria-label="Goto page 1">
         1
       </a>
@@ -19,8 +19,8 @@ export default function Pagination({ nPages, currentPage }) {
 
   if (currentPage - 1 > 2) {
     pages.push(
-      <li>
-        <span class="pagination-ellipsis">&hellip;</span>
+      <li key={"elippsis-1"}>
+        <span className="pagination-ellipsis">&hellip;</span>
       </li>
     )
   }
@@ -28,7 +28,7 @@ export default function Pagination({ nPages, currentPage }) {
   for (let p = currentPage - 1; p <= currentPage + 1; p++) {
     if (p > 1 && p <= nPages) {
       pages.push(
-        <li>
+        <li key={p}>
           <a className={"pagination-link " + isCurrentClass(p)} aria-label={"Goto page " + p}>
             {p}
           </a>
@@ -39,15 +39,15 @@ export default function Pagination({ nPages, currentPage }) {
 
   if (nPages - currentPage > 2) {
     pages.push(
-      <li>
-        <span class="pagination-ellipsis">&hellip;</span>
+      <li key="ellipsis-2">
+        <span className="pagination-ellipsis">&hellip;</span>
       </li>
     )
   }
 
   if (nPages > currentPage + 1) {
     pages.push(
-      <li>
+      <li key={nPages}>
         <a
           className={"pagination-link " + isCurrentClass(nPages)}
           aria-label={"Goto page " + nPages}
@@ -65,16 +65,16 @@ export default function Pagination({ nPages, currentPage }) {
   )
 
   const next = (
-    <a class="pagination-next" disabled={currentPage >= nPages ? true : false}>
+    <a className="pagination-next" disabled={currentPage >= nPages ? true : false}>
       Next page
     </a>
   )
 
   return (
-    <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+    <nav className="pagination is-rounded" role="navigation" aria-label="pagination">
       {prev}
       {next}
-      <ul class="pagination-list">{pages}</ul>
+      <ul className="pagination-list">{pages}</ul>
     </nav>
   )
 }
