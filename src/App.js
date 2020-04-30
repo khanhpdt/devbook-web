@@ -1,10 +1,10 @@
 import React from "react"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import "./App.scss"
 import FileDropModal from "./components/FileDropModal/container"
-import NavBar from "./components/NavBar/container"
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import FileView from "./components/FileView/container"
 import Home from "./components/Home/component"
-import FileView from "./components/FileView/component"
+import NavBar from "./components/NavBar/container"
 
 function App() {
   return (

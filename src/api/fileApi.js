@@ -30,4 +30,12 @@ function fetchFiles() {
   })
 }
 
-export { upload, fetchFiles }
+function getFile(id) {
+  return axios.get(`http://localhost:8081/files/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+}
+
+export { upload, fetchFiles, getFile }
