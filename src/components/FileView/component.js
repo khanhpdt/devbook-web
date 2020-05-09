@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import PdfView from "../PdfView/component"
-import samplePdf from "./samplePdf.pdf"
+import samplePdf from "./sample.pdf"
 
 export default function FileView({ onStart, file }) {
   const { fileId } = useParams()

@@ -1,15 +1,12 @@
 import React from "react"
 import { Document, Page } from "react-pdf"
-
-function onDocumentLoadSuccess() {
-  console.log("onDocumentLoadSuccess")
-}
+import "./component.scss"
 
 export default function PdfView({ src }) {
   return (
     <div>
-      <Document file={src} onLoadSuccess={onDocumentLoadSuccess}>
-        <Page pageNumber={5} />
+      <Document file={src} className="pdf-document">
+        <Page pageNumber={1} renderMode="svg" className="pdf-page-svg" />
       </Document>
       <p>Page 5</p>
     </div>

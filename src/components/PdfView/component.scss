@@ -1,0 +1,22 @@
+/*
+There's a misalign error between the canvas/svg div and the text layer.
+See issue https://github.com/wojtekmaj/react-pdf/issues/556 
+*/
+
+.pdf-document {
+  border-radius: 8px;
+  max-width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  .react-pdf__Page__textContent {
+    top: 49.1% !important;
+  }
+}
+
+.pdf-page-svg {
+  width: auto !important;
+  height: auto !important;
+  border-radius: 8px;
+}
