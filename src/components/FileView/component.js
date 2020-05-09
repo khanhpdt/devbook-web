@@ -8,7 +8,7 @@ export default function FileView({ onStart, file }) {
 
   useEffect(() => {
     onStart(fileId)
-  }, [fileId])
+  }, [onStart, fileId])
 
   return (
     <div>
