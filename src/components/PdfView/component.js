@@ -6,9 +6,9 @@ export default function PdfView({ src }) {
   return (
     <div>
       <Document file={src} className="pdf-document">
-        <Page pageNumber={1} renderMode="svg" className="pdf-page-svg" />
+        <Page pageNumber={3} renderMode="svg" className="pdf-page-svg" />
       </Document>
-      <p>Page 5</p>
+      <p>Page 3</p>
     </div>
   )
 }

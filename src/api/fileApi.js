@@ -38,4 +38,10 @@ function getFile(id) {
   })
 }
 
-export { upload, fetchFiles, getFile }
+function downloadFile(id) {
+  return axios.get(`http://localhost:8081/files/${id}/download`, {
+    responseType: "arraybuffer",
+  })
+}
+
+export { upload, fetchFiles, getFile, downloadFile }
