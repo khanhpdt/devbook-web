@@ -39,9 +39,7 @@ export default function FileView({ onStart, downloadFile, file, fileRawContent }
 
   return (
     <div>
-      <div>FileId: {file ? file.id : ""}</div>
-      <div>FileName: {file ? file.name : ""}</div>
-      <div>FilePath: {file ? file.path : ""}</div>
+      <h4 className="title is-4">{file ? file.name : ""}</h4>
       {fileView}
     </div>
   )
