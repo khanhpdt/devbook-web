@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Document, Page } from "react-pdf"
-import "./component.scss"
+import "./SinglePageView.scss"
 
 function removeTextLayerOffset() {
   const textLayers = document.querySelectorAll(".react-pdf__Page__textContent")

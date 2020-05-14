@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import PdfView from "../PdfView/component"
+import SinglePagePdfView from "../PdfView/SinglePageView"
 
 function arrayBufferToBase64(buffer) {
   let binary = ""
@@ -33,7 +33,7 @@ export default function FileView({ onStart, downloadFile, file, fileRawContent }
   const fileView =
     fileRawContent === null ? null : (
       <div>
-        <PdfView src={pdfSrc} />
+        <SinglePagePdfView src={pdfSrc} />
       </div>
     )
 
