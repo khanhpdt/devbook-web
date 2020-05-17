@@ -1,13 +1,10 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { pdfjs } from "react-pdf"
 import { Provider } from "react-redux"
 import App from "./App"
 import "./index.css"
 import store from "./redux/store"
 import * as serviceWorker from "./serviceWorker"
-
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 
 ReactDOM.render(
   <React.StrictMode>
