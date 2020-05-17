@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import "./SinglePageView.scss"
-import PdfJsView from "../PdfJsView/component"
+import "./component.scss"
+import PdfJsView from "./SinglePagePdfJsView/component"
 
 export default function PdfView({ src, pageNumber }) {
   const [page, setPage] = useState(pageNumber ? pageNumber : 1)
@@ -23,7 +23,7 @@ export default function PdfView({ src, pageNumber }) {
   }
 
   const onSubmitPage = (e) => {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       const newPage = parseInt(e.target.value)
       setPage(newPage)
     }

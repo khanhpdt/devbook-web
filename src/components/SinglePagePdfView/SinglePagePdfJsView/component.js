@@ -1,12 +1,12 @@
-import React, { useRef, useEffect, useState } from "react"
 import pdfjs from "pdfjs-dist"
-import * as pdfjsViewer from "pdfjs-dist/web/pdf_viewer"
 import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry"
-import "../../../node_modules/pdfjs-dist/web/pdf_viewer.css"
+import * as pdfjsViewer from "pdfjs-dist/web/pdf_viewer"
+import React, { useEffect, useState } from "react"
+import "../../../../node_modules/pdfjs-dist/web/pdf_viewer.css"
 
 pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker
 
-var CMAP_URL = "../../../node_modules/pdfjs-dist/cmaps/"
+var CMAP_URL = "../../../../node_modules/pdfjs-dist/cmaps/"
 var CMAP_PACKED = true
 
 // see https://github.com/mozilla/pdf.js/blob/master/examples/components/pageviewer.js for more details
@@ -53,7 +53,7 @@ export default function PdfView({ src, page, scale, onDocLoadSuccess }) {
     }
 
     render()
-  }, [src])
+  }, [])
 
   useEffect(() => {
     const render = async () => {

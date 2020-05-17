@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import SinglePagePdfView from "../PdfView/SinglePageView"
+import SinglePagePdfView from "../SinglePagePdfView/component"
 
 function arrayBufferToBase64(buffer) {
   let binary = ""
