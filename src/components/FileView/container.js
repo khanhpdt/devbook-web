@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { onStart, downloadFile } from "../../redux/actions/fileView"
+import { downloadFile, onStart } from "../../redux/actions/fileView"
 import FileView from "./component"
 
 const mapStateToProps = (state) => ({

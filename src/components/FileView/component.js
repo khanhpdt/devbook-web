@@ -1,6 +1,8 @@
 import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
+import CommentList from "../CommentList/component"
 import SinglePagePdfView from "../SinglePagePdfView/component"
+import "./component.scss"
 
 function arrayBufferToBase64(buffer) {
   let binary = ""
@@ -25,19 +27,22 @@ export default function FileView({ onStart, downloadFile, file, fileRawContent }
     }
   }, [downloadFile, file.id])
 
-  const pdfSrc = fileRawContent === null ? null : `${arrayBufferToBase64(fileRawContent)}`
-
-  const fileView =
+  const content =
     fileRawContent === null ? null : (
-      <div>
-        <SinglePagePdfView src={pdfSrc} pageNumber={1} />
+      <div className="content-container">
+        <div>
+          <SinglePagePdfView src={arrayBufferToBase64(fileRawContent)} pageNumber={1} />
+        </div>
+        <div>
+          <CommentList />
+        </div>
       </div>
     )
 
   return (
     <div>
       <h4 className="title is-4">{file ? file.name : ""}</h4>
-      {fileView}
+      {content}
     </div>
   )
 }
