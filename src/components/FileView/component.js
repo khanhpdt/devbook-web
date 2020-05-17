@@ -25,15 +25,12 @@ export default function FileView({ onStart, downloadFile, file, fileRawContent }
     }
   }, [downloadFile, file.id])
 
-  const pdfSrc =
-    fileRawContent === null
-      ? null
-      : `data:application/pdf;base64,${arrayBufferToBase64(fileRawContent)}`
+  const pdfSrc = fileRawContent === null ? null : `${arrayBufferToBase64(fileRawContent)}`
 
   const fileView =
     fileRawContent === null ? null : (
       <div>
-        <SinglePagePdfView src={pdfSrc} />
+        <SinglePagePdfView src={pdfSrc} pageNumber={1} />
       </div>
     )
 

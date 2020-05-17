@@ -10,6 +10,7 @@
     "bulma": "^0.8.2",
     "lodash": "^4.17.15",
     "node-sass": "^4.13.1",
+    "pdfjs-dist": "^2.3.200",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^10.2.2",

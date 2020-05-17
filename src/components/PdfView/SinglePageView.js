@@ -1,16 +1,6 @@
 import React, { useState } from "react"
-import { Document, Page } from "react-pdf"
 import "./SinglePageView.scss"
-
-function removeTextLayerOffset() {
-  const textLayers = document.querySelectorAll(".react-pdf__Page__textContent")
-  textLayers.forEach((layer) => {
-    const { style } = layer
-    style.top = "0"
-    style.left = "0"
-    style.transform = ""
-  })
-}
+import PdfJsView from "../PdfJsView/component"
 
 export default function PdfView({ src, pageNumber }) {
   const [page, setPage] = useState(pageNumber ? pageNumber : 1)
@@ -41,15 +31,12 @@ export default function PdfView({ src, pageNumber }) {
 
   const docView =
     page === null ? null : (
-      <Document file={src} className="pdf-document" onLoadSuccess={onDocLoadSuccess}>
-        <Page
-          pageNumber={page}
-          renderMode="svg"
-          className="pdf-page-svg"
-          scale={scale}
-          onLoadSuccess={removeTextLayerOffset}
-        />
-      </Document>
+      <PdfJsView
+        src={src}
+        page={page}
+        scale={scale}
+        onDocLoadSuccess={onDocLoadSuccess}
+      ></PdfJsView>
     )
 
   const navigateBack = () => {
