@@ -16,6 +16,7 @@ export default function PdfView({ src, pageNumber }) {
   const [page, setPage] = useState(pageNumber ? pageNumber : 1)
   const [displayedPageNumber, setDisplayedPageNumber] = useState(pageNumber ? pageNumber : 1)
   const [pageCount, setPageCount] = useState(null)
+  const [scale, setScale] = useState(1.0)
 
   const onDocLoadSuccess = (document) => {
     const { numPages } = document
@@ -45,6 +46,7 @@ export default function PdfView({ src, pageNumber }) {
           pageNumber={page}
           renderMode="svg"
           className="pdf-page-svg"
+          scale={scale}
           onLoadSuccess={removeTextLayerOffset}
         />
       </Document>
@@ -58,9 +60,18 @@ export default function PdfView({ src, pageNumber }) {
 
   const navigateNext = () => {
     const p = page + 1
-    console.log(p)
     setPage(p)
     setDisplayedPageNumber(p)
+  }
+
+  const scaleFactor = 0.25
+
+  const zoomIn = () => {
+    setScale(scale + scaleFactor)
+  }
+
+  const zoomOut = () => {
+    setScale(scale - scaleFactor)
   }
 
   const navigation =
@@ -85,6 +96,18 @@ export default function PdfView({ src, pageNumber }) {
           <button className="button" onClick={navigateNext}>
             <span className="icon">
               <i className="fa fa-chevron-right"></i>
+            </span>
+          </button>
+        </div>
+        <div className="buttons has-addons">
+          <button className="button" onClick={zoomOut}>
+            <span className="icon">
+              <i className="fa fa-search-minus"></i>
+            </span>
+          </button>
+          <button className="button" onClick={zoomIn}>
+            <span className="icon">
+              <i className="fa fa-search-plus"></i>
             </span>
           </button>
         </div>

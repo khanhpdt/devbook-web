@@ -24,4 +24,12 @@ See issue https://github.com/wojtekmaj/react-pdf/issues/332
 .nav-section {
   display: flex;
   align-items: center;
+
+  .buttons {
+    margin-bottom: 0px !important;
+
+    .button {
+      margin-bottom: 0px !important;
+    }
+  }
 }
