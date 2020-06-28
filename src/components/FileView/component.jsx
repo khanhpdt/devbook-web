@@ -29,11 +29,11 @@ export default function FileView({ onStart, downloadFile, file, fileRawContent }
 
   const content =
     fileRawContent === null ? null : (
-      <div className="content-container">
-        <div>
-          <SinglePagePdfView src={arrayBufferToBase64(fileRawContent)} pageNumber={1} />
+      <div className="content-container columns">
+        <div className="column is-9">
+          <SinglePagePdfView src={arrayBufferToBase64(fileRawContent)} />
         </div>
-        <div>
+        <div className="column is-3">
           <CommentList />
         </div>
       </div>
