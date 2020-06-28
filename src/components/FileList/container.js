@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { onStart } from "../../redux/actions/fileList"
+import { onStart, deleteFile } from "../../redux/actions/fileList"
 import FileList from "./component"
 
 const mapStateToProps = (state) => ({
@@ -9,6 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onStart: () => dispatch(onStart()),
+  onDeleteFile: (fileId) => dispatch(deleteFile(fileId)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(FileList)

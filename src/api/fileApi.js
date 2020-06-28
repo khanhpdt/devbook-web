@@ -44,4 +44,8 @@ function downloadFile(id) {
   })
 }
 
-export { upload, fetchFiles, getFile, downloadFile }
+function deleteFile(id) {
+  return axios.delete(`http://localhost:8081/files/${id}`)
+}
+
+export { upload, fetchFiles, getFile, downloadFile, deleteFile }
