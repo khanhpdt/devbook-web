@@ -119,7 +119,7 @@ export default function PdfView({ src }) {
   return (
     <div className="columns">
       <div className="column is-3">
-        <OutlineView pdfDoc={pdfDoc} onSelectOutlineItem={(p) => changePage(p)} />
+        <OutlineView pdfDoc={pdfDoc} onSelectOutlineItemPageIndex={(p) => changePage(p)} />
       </div>
       <div className="pdf-content-view column is-9">
         {docView}
