@@ -79,8 +79,9 @@ export default function PdfView({ src }) {
   const navigation =
     pdfDoc === null ? null : (
       <div className="nav-section">
-        <div>
+        <div className="mx-1">
           <input
+            style={{ width: "4rem", textAlign: "right" }}
             className="input"
             type="text"
             value={displayedPageNumber}
@@ -89,25 +90,25 @@ export default function PdfView({ src }) {
           />
         </div>
         <div>/ {pageCount}</div>
-        <div className="buttons has-addons">
-          <button className="button" onClick={navigateBack}>
+        <div className="buttons has-addons mx-1">
+          <button className="button mx-1" onClick={navigateBack}>
             <span className="icon">
               <i className="fas fa-chevron-left" />
             </span>
           </button>
-          <button className="button" onClick={navigateNext}>
+          <button className="button mx-1" onClick={navigateNext}>
             <span className="icon">
               <i className="fas fa-chevron-right" />
             </span>
           </button>
         </div>
         <div className="buttons has-addons">
-          <button className="button" onClick={zoomOut}>
+          <button className="button mx-1" onClick={zoomOut}>
             <span className="icon">
               <i className="fas fa-search-minus" />
             </span>
           </button>
-          <button className="button" onClick={zoomIn}>
+          <button className="button mx-1" onClick={zoomIn}>
             <span className="icon">
               <i className="fas fa-search-plus" />
             </span>
@@ -119,12 +120,10 @@ export default function PdfView({ src }) {
   return (
     <div className="columns">
       <div className="column is-3">
+        <div>{navigation}</div>
         <OutlineView pdfDoc={pdfDoc} onSelectOutlineItemPageIndex={(p) => changePage(p)} />
       </div>
-      <div className="pdf-content-view column is-9">
-        {docView}
-        {navigation}
-      </div>
+      <div className="pdf-content-view column is-9">{docView}</div>
     </div>
   )
 }
