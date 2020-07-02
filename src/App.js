@@ -5,6 +5,7 @@ import FileDropModal from "./components/FileDropModal/container"
 import FileView from "./components/FileView/container"
 import Home from "./components/Home/component"
 import NavBar from "./components/NavBar/container"
+import FileEditModal from "./components/FileEditModal/container"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/file/:fileId" component={FileView} />
 
           <FileDropModal />
+          <FileEditModal />
         </div>
       </div>
     </Router>

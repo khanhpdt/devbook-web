@@ -14,7 +14,7 @@ function arrayBufferToBase64(buffer) {
   return window.btoa(binary)
 }
 
-export default function FileView({ onStart, downloadFile, file, fileRawContent }) {
+export default function FileView({ onStart, downloadFile, onClickEdit, file, fileRawContent }) {
   const { fileId } = useParams()
 
   useEffect(() => {
@@ -39,9 +39,24 @@ export default function FileView({ onStart, downloadFile, file, fileRawContent }
       </div>
     )
 
+  const title = (
+    <div className="title-container">
+      <div className="mr-4">
+        <h2 className="title-text">{file ? file.name : ""}</h2>
+      </div>
+      <div>
+        <button className="button" onClick={() => onClickEdit(file)}>
+          <span className="icon is-small">
+            <i className="fas fa-edit" />
+          </span>
+        </button>
+      </div>
+    </div>
+  )
+
   return (
     <div>
-      <h4 className="title is-4">{file ? file.name : ""}</h4>
+      {title}
       {content}
     </div>
   )

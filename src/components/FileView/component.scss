@@ -2,3 +2,12 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.title-container {
+  display: flex;
+  align-items: center;
+}
+
+.title-text {
+  font-weight: bold;
+}
