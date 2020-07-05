@@ -48,4 +48,15 @@ function deleteFile(id) {
   return axios.delete(`http://localhost:8081/files/${id}`)
 }
 
-export { upload, fetchFiles, getFile, downloadFile, deleteFile }
+function saveFile(file) {
+  const data = {
+    name: file.name,
+  }
+  return axios.put(`http://localhost:8081/files/${file.id}`, data, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+}
+
+export { upload, fetchFiles, getFile, downloadFile, deleteFile, saveFile }

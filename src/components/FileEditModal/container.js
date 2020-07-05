@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import FileEditModal from "./component"
-import { close } from "../../redux/actions/fileEditModalActions"
+import { close, saveFile } from "../../redux/actions/fileEditModalActions"
 
 const mapStateToProps = (state) => {
   return {
@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     close: () => dispatch(close()),
+    save: (f) => dispatch(saveFile(f)),
   }
 }
 

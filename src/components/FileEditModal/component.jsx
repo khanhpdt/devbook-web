@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 
-export default function FileEditModal({ close, isActive, file }) {
+export default function FileEditModal({ close, save, isActive, file }) {
   const [fileName, setFileName] = useState(file ? file.name : "")
   const isActiveClass = isActive ? "is-active" : ""
 
@@ -10,6 +10,13 @@ export default function FileEditModal({ close, isActive, file }) {
 
   const onChangeName = (e) => {
     setFileName(e.target.value)
+  }
+
+  const onSave = () => {
+    save({
+      id: file.id,
+      name: fileName,
+    })
   }
 
   return (
@@ -34,7 +41,9 @@ export default function FileEditModal({ close, isActive, file }) {
           </div>
         </section>
         <footer className="modal-card-foot">
-          <button className="button is-success">Save</button>
+          <button className="button is-success" onClick={() => onSave()}>
+            Save
+          </button>
           <button className="button" onClick={() => close()}>
             Cancel
           </button>
