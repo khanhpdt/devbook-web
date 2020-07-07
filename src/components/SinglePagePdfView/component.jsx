@@ -18,6 +18,24 @@ export default function PdfView({ src }) {
   const [scale, setScale] = useState(1.0)
 
   useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.keyCode === 37) {
+        // ArrowLeft
+        navigateBack()
+      } else if (e.keyCode === 39) {
+        // ArrowRight
+        navigateNext()
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown)
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown)
+    }
+  })
+
+  useEffect(() => {
     const readPdf = async () => {
       const loadingTask = pdfjs.getDocument({
         data: atob(src),
@@ -40,7 +58,7 @@ export default function PdfView({ src }) {
       setDisplayedPageNumber("")
     } else {
       const newPage = parseInt(e.target.value)
-      setDisplayedPageNumber(newPage)
+      setDisplayedPageNumber(newPage.toString())
     }
   }
 
