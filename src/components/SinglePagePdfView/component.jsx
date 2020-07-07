@@ -25,6 +25,12 @@ export default function PdfView({ src }) {
       } else if (e.keyCode === 39) {
         // ArrowRight
         navigateNext()
+      } else if (e.keyCode === 107 && e.altKey) {
+        // Alt + "+"
+        zoomIn()
+      } else if (e.keyCode === 109 && e.altKey) {
+        // Alt + "-"
+        zoomOut()
       }
     }
 
