@@ -12,11 +12,13 @@
     "node-sass": "^4.13.1",
     "pdfjs-dist": "^2.3.200",
     "react": "^16.13.1",
+    "react-autosuggest": "^10.0.2",
     "react-dom": "^16.13.1",
     "react-dropzone": "^10.2.2",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "react-tagsinput": "^3.19.0",
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3"
   },

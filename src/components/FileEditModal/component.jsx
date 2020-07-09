@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
+import TagAutoSuggest from "../TagAutoSuggest/component"
 
 export default function FileEditModal({ close, save, isActive, file }) {
   const [fileName, setFileName] = useState(file ? file.name : "")
+  const [tags, setTags] = useState(file && file.tags ? file.tags : [])
   const isActiveClass = isActive ? "is-active" : ""
-
-  useEffect(() => {
-    setFileName(file ? file.name : "")
-  }, [file])
 
   const onChangeName = (e) => {
     setFileName(e.target.value)
@@ -16,6 +14,7 @@ export default function FileEditModal({ close, save, isActive, file }) {
     save({
       id: file.id,
       name: fileName,
+      tags: tags,
     })
   }
 
@@ -36,6 +35,16 @@ export default function FileEditModal({ close, save, isActive, file }) {
                 type="text"
                 value={fileName}
                 onChange={(e) => onChangeName(e)}
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Tags</label>
+            <div className="control">
+              <TagAutoSuggest
+                tags={tags}
+                tagSuggestions={["s1", "s2", "s3"]}
+                onChangeTags={(ts) => setTags(ts)}
               />
             </div>
           </div>
