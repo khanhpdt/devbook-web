@@ -1,10 +1,17 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import TagAutoSuggest from "../TagAutoSuggest/component"
 
 export default function FileEditModal({ close, save, isActive, file }) {
-  const [fileName, setFileName] = useState(file ? file.name : "")
-  const [tags, setTags] = useState(file && file.tags ? file.tags : [])
+  const [fileName, setFileName] = useState()
+  const [tags, setTags] = useState()
   const isActiveClass = isActive ? "is-active" : ""
+
+  useEffect(() => {
+    if (file) {
+      setFileName(file.name)
+      setTags(file.tags ? file.tags : [])
+    }
+  }, [file])
 
   const onChangeName = (e) => {
     setFileName(e.target.value)
