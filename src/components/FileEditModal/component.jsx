@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
-import TagAutoSuggest from "../TagAutoSuggest/component"
+import TagAutoSuggest from "../TagAutoSuggest/container"
 
 export default function FileEditModal({ close, save, isActive, file }) {
-  const [fileName, setFileName] = useState()
-  const [tags, setTags] = useState()
+  const [fileName, setFileName] = useState("")
+  const [tags, setTags] = useState([])
   const isActiveClass = isActive ? "is-active" : ""
 
   useEffect(() => {
@@ -48,11 +48,7 @@ export default function FileEditModal({ close, save, isActive, file }) {
           <div className="field">
             <label className="label">Tags</label>
             <div className="control">
-              <TagAutoSuggest
-                tags={tags}
-                tagSuggestions={["s1", "s2", "s3"]}
-                onChangeTags={(ts) => setTags(ts)}
-              />
+              {isActive ? <TagAutoSuggest tags={tags} onChangeTags={(ts) => setTags(ts)} /> : null}
             </div>
           </div>
         </section>

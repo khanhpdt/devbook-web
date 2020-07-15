@@ -1,16 +1,31 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import TagsInput from "react-tagsinput"
 import AutoSuggest from "react-autosuggest"
 import _ from "lodash"
 import "react-tagsinput/react-tagsinput.css"
 
-export default function TagAutoSuggest({ tags, tagSuggestions, onChangeTags }) {
+export default function TagAutoSuggest({ tags, tagSuggestions, onChangeTags, getTagSuggestions }) {
   const [tagInputValue, setTagInputValue] = useState("")
-  const [currentTags, setCurrentTags] = useState(tags || [])
+  const [currentTags, setCurrentTags] = useState([])
+  const [suggestions, setSuggestions] = useState([])
+
+  useEffect(() => {
+    if (tags) {
+      setCurrentTags(tags)
+    }
+  }, [tags])
+
+  useEffect(() => {
+    setSuggestions([].concat(tagSuggestions))
+  }, [tagSuggestions])
+
+  useEffect(() => {
+    getTagSuggestions()
+  }, [])
 
   const autoCompleteInput = () => (
     <AutoSuggest
-      suggestions={tagSuggestions}
+      suggestions={suggestions}
       getSuggestionValue={(suggestion) => suggestion}
       renderSuggestion={(suggestion) => <span>{suggestion}</span>}
       inputProps={{
