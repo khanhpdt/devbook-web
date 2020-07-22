@@ -51,6 +51,7 @@ function deleteFile(id) {
 function saveFile(file) {
   const data = {
     name: file.name,
+    tags: file.tags,
   }
   return axios.put(`http://localhost:8081/files/${file.id}`, data, {
     headers: {

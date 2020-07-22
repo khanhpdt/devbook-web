@@ -7,7 +7,9 @@ import "react-tagsinput/react-tagsinput.css"
 export default function TagAutoSuggest({ tags, tagSuggestions, onChangeTags, getTagSuggestions }) {
   const [tagInputValue, setTagInputValue] = useState("")
   const [currentTags, setCurrentTags] = useState([])
-  const [suggestions, setSuggestions] = useState([])
+  const [currentSuggestions, setCurrentSuggestions] = useState([])
+
+  const newChoiceSuffix = " (Add new)"
 
   useEffect(() => {
     if (tags) {
@@ -16,17 +18,24 @@ export default function TagAutoSuggest({ tags, tagSuggestions, onChangeTags, get
   }, [tags])
 
   useEffect(() => {
-    setSuggestions([].concat(tagSuggestions))
+    setCurrentSuggestions([].concat(tagSuggestions))
   }, [tagSuggestions])
 
   useEffect(() => {
     getTagSuggestions()
   }, [])
 
+  const getSuggestionValue = (suggestion) => {
+    if (_.endsWith(suggestion, newChoiceSuffix)) {
+      return _.replace(suggestion, newChoiceSuffix, "")
+    }
+    return suggestion
+  }
+
   const autoCompleteInput = () => (
     <AutoSuggest
-      suggestions={suggestions}
-      getSuggestionValue={(suggestion) => suggestion}
+      suggestions={currentSuggestions}
+      getSuggestionValue={getSuggestionValue}
       renderSuggestion={(suggestion) => <span>{suggestion}</span>}
       inputProps={{
         placeholder: "Type to find a tag",
@@ -36,12 +45,30 @@ export default function TagAutoSuggest({ tags, tagSuggestions, onChangeTags, get
         },
       }}
       onSuggestionSelected={(e, { suggestion }) => {
-        const newTags = _.uniq(_.concat(currentTags, suggestion))
+        const suggestionValue = getSuggestionValue(suggestion)
+        const newTags = _.uniq(_.concat(currentTags, suggestionValue))
         setCurrentTags(newTags)
         onChangeTags(newTags)
       }}
       onSuggestionsClearRequested={() => {}}
-      onSuggestionsFetchRequested={() => {}}
+      onSuggestionsFetchRequested={({ value, reason }) => {
+        if (reason === "input-changed") {
+          let suggestions = _.filter(tagSuggestions, (s) =>
+            _.includes(_.toLower(s), _.toLower(value))
+          )
+
+          const isNewChoice = !_.some(
+            suggestions.concat(currentTags),
+            (s) => _.toLower(s) === _.toLower(value)
+          )
+          if (isNewChoice) {
+            const newChoice = value + newChoiceSuffix
+            suggestions = [newChoice].concat(suggestions)
+          }
+
+          setCurrentSuggestions(suggestions)
+        }
+      }}
     />
   )
 
