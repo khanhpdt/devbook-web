@@ -9,7 +9,7 @@ import {
 function* getSuggestions() {
   try {
     const res = yield call(tagApi.getTagSuggestions)
-    yield put(getSuggestionsSuccess(res.data.suggestions))
+    yield put(getSuggestionsSuccess(res.data.list))
   } catch (err) {
     yield put(getSuggestionsFailed())
   }

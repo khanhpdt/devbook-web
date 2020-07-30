@@ -26,17 +26,17 @@ export default function TagAutoSuggest({ tags, tagSuggestions, onChangeTags, get
   }, [])
 
   const getSuggestionValue = (suggestion) => {
-    if (_.endsWith(suggestion, newChoiceSuffix)) {
-      return _.replace(suggestion, newChoiceSuffix, "")
+    if (_.endsWith(suggestion.name, newChoiceSuffix)) {
+      return _.replace(suggestion.name, newChoiceSuffix, "")
     }
-    return suggestion
+    return suggestion.name
   }
 
   const autoCompleteInput = () => (
     <AutoSuggest
       suggestions={currentSuggestions}
       getSuggestionValue={getSuggestionValue}
-      renderSuggestion={(suggestion) => <span>{suggestion}</span>}
+      renderSuggestion={(suggestion) => <span>{suggestion.name}</span>}
       inputProps={{
         placeholder: "Type to find a tag",
         value: tagInputValue,
@@ -53,17 +53,18 @@ export default function TagAutoSuggest({ tags, tagSuggestions, onChangeTags, get
       onSuggestionsClearRequested={() => {}}
       onSuggestionsFetchRequested={({ value, reason }) => {
         if (reason === "input-changed") {
+          // show suggestions containing user input
           let suggestions = _.filter(tagSuggestions, (s) =>
-            _.includes(_.toLower(s), _.toLower(value))
+            _.includes(_.toLower(s.name), _.toLower(value))
           )
 
           const isNewChoice = !_.some(
-            suggestions.concat(currentTags),
+            _.map(suggestions, (s) => s.name).concat(currentTags),
             (s) => _.toLower(s) === _.toLower(value)
           )
           if (isNewChoice) {
             const newChoice = value + newChoiceSuffix
-            suggestions = [newChoice].concat(suggestions)
+            suggestions = _.concat([{ name: newChoice }], suggestions)
           }
 
           setCurrentSuggestions(suggestions)
