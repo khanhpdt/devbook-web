@@ -1,9 +1,9 @@
-import { ON_START_SUCCESS, ON_START } from "../actions/fileList"
+import { ON_START_SUCCESS, ON_START } from "../actions/bookList"
 
 const initialState = {
   currentPage: null,
   nPages: null,
-  files: null,
+  books: null,
 }
 
 const N_ITEMS_PER_PAGE = 10
@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
         return state
       }
       return Object.assign({}, state, {
-        files: p.list,
+        books: p.list,
         nPages: Math.ceil(p.total / N_ITEMS_PER_PAGE),
       })
     default:

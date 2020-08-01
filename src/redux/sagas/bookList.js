@@ -1,13 +1,13 @@
 import { call, put, takeLatest } from "redux-saga/effects"
 import {
-  DELETE_FILE,
-  deleteFileFailed,
-  deleteFileSuccess,
+  DELETE_BOOK,
+  deleteBookFailed,
+  deleteBookSuccess,
   ON_START,
   onStartFailed,
   onStartSuccess,
-} from "../actions/fileList"
-import * as fileApi from "../../api/fileApi"
+} from "../actions/bookList"
+import * as fileApi from "../../api/bookApi"
 
 function* onStart() {
   try {
@@ -25,14 +25,14 @@ function* watchOnStart() {
 function* deleteFile(action) {
   try {
     const res = yield call(fileApi.deleteFile, action.payload)
-    yield put(deleteFileSuccess(res.data))
+    yield put(deleteBookSuccess(res.data))
   } catch (err) {
-    yield put(deleteFileFailed())
+    yield put(deleteBookFailed())
   }
 }
 
 function* watchDeleteFile() {
-  yield takeLatest(DELETE_FILE, deleteFile)
+  yield takeLatest(DELETE_BOOK, deleteFile)
 }
 
 export default function fileListSagas() {

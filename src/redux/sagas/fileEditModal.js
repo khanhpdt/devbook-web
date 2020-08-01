@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects"
-import * as fileApi from "../../api/fileApi"
+import * as fileApi from "../../api/bookApi"
 import { SAVE_FILE, saveFileFailed, saveFileSuccess } from "../actions/fileEditModalActions"
 
 function* saveFile(action) {

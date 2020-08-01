@@ -1,8 +1,10 @@
 import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import CommentList from "../CommentList/component"
-import SinglePagePdfView from "../SinglePagePdfView/component"
+
 import "./component.scss"
+
+import CommentList from "../../components/CommentList/component"
+import SinglePagePdfView from "../../components/SinglePagePdfView/component"
 
 function arrayBufferToBase64(buffer) {
   let binary = ""
@@ -14,18 +16,18 @@ function arrayBufferToBase64(buffer) {
   return window.btoa(binary)
 }
 
-export default function FileView({ onStart, downloadFile, onClickEdit, file, fileRawContent }) {
-  const { fileId } = useParams()
+export default function Book({ onStart, downloadBook, onClickEdit, book, fileRawContent }) {
+  const { bookId } = useParams()
 
   useEffect(() => {
-    onStart(fileId)
-  }, [onStart, fileId])
+    onStart(bookId)
+  }, [onStart, bookId])
 
   useEffect(() => {
-    if (file.id) {
-      downloadFile(file.id)
+    if (book.id) {
+      downloadBook(book.id)
     }
-  }, [downloadFile, file.id])
+  }, [downloadBook, book.id])
 
   const content =
     fileRawContent === null ? null : (
@@ -42,10 +44,10 @@ export default function FileView({ onStart, downloadFile, onClickEdit, file, fil
   const title = (
     <div className="title-container">
       <div className="mr-4">
-        <h2 className="title-text">{file ? file.name : ""}</h2>
+        <h2 className="title-text">{book ? book.name : ""}</h2>
       </div>
       <div>
-        <button className="button" onClick={() => onClickEdit(file)}>
+        <button className="button" onClick={() => onClickEdit(book)}>
           <span className="icon is-small">
             <i className="fas fa-edit" />
           </span>

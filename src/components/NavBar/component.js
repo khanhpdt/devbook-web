@@ -9,6 +9,9 @@ export default function NavBar(props) {
           <Link to="/" className="navbar-item">
             Home
           </Link>
+          <Link to="/books" className="navbar-item">
+            Books
+          </Link>
         </div>
 
         <div className="navbar-end">

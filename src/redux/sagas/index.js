@@ -1,6 +1,6 @@
 import { all } from "redux-saga/effects"
-import fileListSagas from "./fileList"
-import fileViewSagas from "./fileView"
+import fileListSagas from "./bookList"
+import fileViewSagas from "./book"
 import fileEditModalSagas from "./fileEditModal"
 import tagAutoSuggestSagas from "./tagAutoSuggest"
 

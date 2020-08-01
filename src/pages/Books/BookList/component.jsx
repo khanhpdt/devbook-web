@@ -1,38 +1,40 @@
 import React, { useEffect } from "react"
-import _ from "lodash/collection"
-import Pagination from "../Pagination"
 import { Link } from "react-router-dom"
+import _ from "lodash/collection"
+
 import "./component.scss"
 
-export default function FileList({ files, nPages, onStart, onDeleteFile }) {
+import Pagination from "../../../components/Pagination"
+
+export default function BookList({ books, nPages, onStart, onDeleteBook }) {
   useEffect(() => {
     onStart()
   }, [onStart])
 
-  const noFile =
-    files === null || files.length === 0 ? <div className="panel-block">No file.</div> : null
+  const noBook =
+    books === null || books.length === 0 ? <div className="panel-block">No book found.</div> : null
 
   const pagination =
-    files === null ? null : (
+    books === null ? null : (
       <div className="panel-block" style={{ justifyContent: "flex-end" }}>
         <Pagination currentPage={1} nPages={nPages} />
       </div>
     )
 
-  const fileList = (
+  const bookList = (
     <div className="panel">
-      <p className="panel-heading">Files</p>
-      {_.map(files, (f) => {
+      <p className="panel-heading">Books</p>
+      {_.map(books, (f) => {
         return (
-          <Link className="panel-block" to={`/file/${f.id}`} key={f.id}>
-            <div className="file-row-container">
+          <Link className="panel-block" to={`/book/${f.id}`} key={f.id}>
+            <div className="book-row-container">
               <div>{f.name}</div>
               <div>
                 <button
                   className="button"
                   onClick={(e) => {
                     e.preventDefault()
-                    onDeleteFile(f.id)
+                    onDeleteBook(f.id)
                   }}
                 >
                   <span className="icon is-medium">
@@ -44,10 +46,10 @@ export default function FileList({ files, nPages, onStart, onDeleteFile }) {
           </Link>
         )
       })}
-      {noFile}
+      {noBook}
       {pagination}
     </div>
   )
 
-  return <div>{fileList}</div>
+  return <div>{bookList}</div>
 }
