@@ -24,17 +24,17 @@ export default function BookList({ books, nPages, onStart, onDeleteBook }) {
   const bookList = (
     <div className="panel">
       <p className="panel-heading">Books</p>
-      {_.map(books, (f) => {
+      {_.map(books, (book) => {
         return (
-          <Link className="panel-block" to={`/book/${f.id}`} key={f.id}>
+          <Link className="panel-block" to={`/book/${book.id}`} key={book.id}>
             <div className="book-row-container">
-              <div>{f.name}</div>
+              <div>{book.title}</div>
               <div>
                 <button
                   className="button"
                   onClick={(e) => {
                     e.preventDefault()
-                    onDeleteBook(f.id)
+                    onDeleteBook(book.id)
                   }}
                 >
                   <span className="icon is-medium">
