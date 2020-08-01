@@ -44,7 +44,7 @@ export default function Book({ onStart, downloadBook, onClickEdit, book, fileRaw
   const title = (
     <div className="title-container">
       <div className="mr-4">
-        <h2 className="title-text">{book ? book.name : ""}</h2>
+        <h2 className="title-text">{book ? book.title : ""}</h2>
       </div>
       <div>
         <button className="button" onClick={() => onClickEdit(book)}>

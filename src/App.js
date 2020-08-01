@@ -8,7 +8,7 @@ import NavBar from "./components/NavBar/container"
 import Home from "./pages/Home/component"
 import Book from "./pages/Book/container"
 import BooksPage from "./pages/Books"
-import FileEditModal from "./components/FileEditModal/container"
+import FileEditModal from "./modals/BookEdit/container"
 
 function App() {
   return (

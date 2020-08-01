@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react"
-import TagAutoSuggest from "../TagAutoSuggest/container"
+import TagAutoSuggest from "../../components/TagAutoSuggest/container"
 
-export default function FileEditModal({ close, save, isActive, file }) {
-  const [fileName, setFileName] = useState("")
+export default function BookEditModal({ close, save, isActive, book }) {
+  const [bookTitle, setBookTitle] = useState("")
   const [tags, setTags] = useState([])
   const isActiveClass = isActive ? "is-active" : ""
 
   useEffect(() => {
-    if (file) {
-      setFileName(file.name)
-      setTags(file.tags ? file.tags : [])
+    if (book) {
+      setBookTitle(book.title)
+      setTags(book.tags ? book.tags : [])
     }
-  }, [file])
+  }, [book])
 
-  const onChangeName = (e) => {
-    setFileName(e.target.value)
+  const onChangeTitle = (e) => {
+    setBookTitle(e.target.value)
   }
 
   const onSave = () => {
     save({
-      id: file.id,
-      name: fileName,
+      id: book.id,
+      title: bookTitle,
       tags: tags,
     })
   }
@@ -30,18 +30,18 @@ export default function FileEditModal({ close, save, isActive, file }) {
       <div className="modal-background" />
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title">Edit file</p>
+          <p className="modal-card-title">Edit book</p>
           <button className="delete" aria-label="close" onClick={() => close()} />
         </header>
         <section className="modal-card-body">
           <div className="field">
-            <label className="label">Name</label>
+            <label className="label">Title</label>
             <div className="control">
               <input
                 className="input"
                 type="text"
-                value={fileName}
-                onChange={(e) => onChangeName(e)}
+                value={bookTitle}
+                onChange={(e) => onChangeTitle(e)}
               />
             </div>
           </div>

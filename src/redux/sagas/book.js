@@ -11,7 +11,7 @@ import {
 
 function* onStart(action) {
   try {
-    const res = yield call(bookApi.getFile, action.payload.bookId)
+    const res = yield call(bookApi.findBookById, action.payload.bookId)
     yield put(onStartSuccess(res.data))
   } catch (err) {
     yield put(onStartFailed())
@@ -24,7 +24,7 @@ function* watchOnStart() {
 
 function* downloadBook(action) {
   try {
-    const res = yield call(bookApi.downloadFile, action.payload.bookId)
+    const res = yield call(bookApi.downloadBook, action.payload.bookId)
     yield put(downloadBookSuccess(res.data))
   } catch (err) {
     yield put(downloadBookFailed())

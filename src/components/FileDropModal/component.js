@@ -6,7 +6,7 @@ import * as fileApi from "../../api/bookApi"
 import styles from "./component.module.scss"
 
 function upload(acceptedFiles) {
-  fileApi.upload(acceptedFiles)
+  fileApi.uploadBooks(acceptedFiles)
 }
 
 export default function FileDropModal(props) {

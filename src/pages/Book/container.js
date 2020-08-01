@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import { downloadBook, onStart } from "../../redux/actions/book"
-import { open } from "../../redux/actions/fileEditModalActions"
+import { open } from "../../redux/actions/bookEdit"
 import Book from "./component"
 
 const mapStateToProps = (state) => ({

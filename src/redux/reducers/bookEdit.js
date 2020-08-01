@@ -1,8 +1,8 @@
-import { CLOSE, OPEN } from "../actions/fileEditModalActions"
+import { CLOSE, OPEN } from "../actions/bookEdit"
 
 const initialState = {
   isActive: false,
-  file: null,
+  book: null,
 }
 
 export default function (state = initialState, action) {
@@ -17,7 +17,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isActive: true,
-        file: action.payload.file,
+        book: action.payload.book,
       }
     }
     default:

@@ -11,7 +11,7 @@ import * as fileApi from "../../api/bookApi"
 
 function* onStart() {
   try {
-    const res = yield call(fileApi.fetchFiles)
+    const res = yield call(fileApi.findBooks)
     yield put(onStartSuccess(res.data))
   } catch (err) {
     yield put(onStartFailed())
@@ -22,19 +22,19 @@ function* watchOnStart() {
   yield takeLatest(ON_START, onStart)
 }
 
-function* deleteFile(action) {
+function* deleteBook(action) {
   try {
-    const res = yield call(fileApi.deleteFile, action.payload)
+    const res = yield call(fileApi.deleteBook, action.payload)
     yield put(deleteBookSuccess(res.data))
   } catch (err) {
     yield put(deleteBookFailed())
   }
 }
 
-function* watchDeleteFile() {
-  yield takeLatest(DELETE_BOOK, deleteFile)
+function* watchDeleteBook() {
+  yield takeLatest(DELETE_BOOK, deleteBook)
 }
 
-export default function fileListSagas() {
-  return [watchOnStart(), watchDeleteFile()]
+export default function bookListSagas() {
+  return [watchOnStart(), watchDeleteBook()]
 }

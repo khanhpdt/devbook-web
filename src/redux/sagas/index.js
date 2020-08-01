@@ -1,14 +1,10 @@
 import { all } from "redux-saga/effects"
-import fileListSagas from "./bookList"
-import fileViewSagas from "./book"
-import fileEditModalSagas from "./fileEditModal"
+
+import bookListSagas from "./bookList"
+import bookSagas from "./book"
+import bookEditSagas from "./bookEdit"
 import tagAutoSuggestSagas from "./tagAutoSuggest"
 
 export default function* rootSaga() {
-  yield all([
-    ...fileListSagas(),
-    ...fileViewSagas(),
-    ...fileEditModalSagas(),
-    ...tagAutoSuggestSagas(),
-  ])
+  yield all([...bookListSagas(), ...bookSagas(), ...bookEditSagas(), ...tagAutoSuggestSagas()])
 }

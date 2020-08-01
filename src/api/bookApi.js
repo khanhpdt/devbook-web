@@ -1,15 +1,16 @@
 import axios from "axios"
 import _ from "lodash/collection"
+import { API_URL } from "./config"
 
-function upload(files) {
-  if (files && files.length > 0) {
+function uploadBooks(books) {
+  if (books && books.length > 0) {
     const data = new FormData()
 
-    _.forEach(files, (f) => {
-      data.append("files", f, f.name)
+    _.forEach(books, (f) => {
+      data.append("books", f, f.name)
     })
 
-    return axios.post("http://localhost:8081/files/upload", data, {
+    return axios.post(`${API_URL}/books/upload`, data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -17,47 +18,47 @@ function upload(files) {
   }
 }
 
-function fetchFiles() {
+function findBooks() {
   const data = {
     query: {
       match_all: {},
     },
   }
-  return axios.post("http://localhost:8081/files/search?page=1&size=10", data, {
+  return axios.post(`${API_URL}/books/search?page=1&size=10`, data, {
     headers: {
       "Content-Type": "application/json",
     },
   })
 }
 
-function getFile(id) {
-  return axios.get(`http://localhost:8081/files/${id}`, {
+function findBookById(id) {
+  return axios.get(`${API_URL}/books/${id}`, {
     headers: {
       "Content-Type": "application/json",
     },
   })
 }
 
-function downloadFile(id) {
-  return axios.get(`http://localhost:8081/files/${id}/download`, {
+function downloadBook(id) {
+  return axios.get(`${API_URL}/books/${id}/download`, {
     responseType: "arraybuffer",
   })
 }
 
-function deleteFile(id) {
-  return axios.delete(`http://localhost:8081/files/${id}`)
+function deleteBook(id) {
+  return axios.delete(`${API_URL}/books/${id}`)
 }
 
-function saveFile(file) {
+function saveBook(book) {
   const data = {
-    name: file.name,
-    tags: file.tags,
+    title: book.title,
+    tags: book.tags,
   }
-  return axios.put(`http://localhost:8081/files/${file.id}`, data, {
+  return axios.put(`${API_URL}/books/${book.id}`, data, {
     headers: {
       "Content-Type": "application/json",
     },
   })
 }
 
-export { upload, fetchFiles, getFile, downloadFile, deleteFile, saveFile }
+export { uploadBooks, findBooks, findBookById, downloadBook, deleteBook, saveBook }
