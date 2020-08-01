@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 
 import "./component.scss"
 
-import CommentList from "../../components/CommentList/component"
+import Notes from "./Notes/component"
 import SinglePagePdfView from "../../components/SinglePagePdfView/component"
 
 function arrayBufferToBase64(buffer) {
@@ -36,7 +36,7 @@ export default function Book({ onStart, downloadBook, onClickEdit, book, fileRaw
           <SinglePagePdfView src={arrayBufferToBase64(fileRawContent)} />
         </div>
         <div className="column is-3">
-          <CommentList />
+          <Notes />
         </div>
       </div>
     )
