@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom"
 
 import "./App.scss"
 
-import FileDropModal from "./components/FileDropModal/container"
+import FileDropModal from "./modals/FileDrop/container"
 import NavBar from "./components/NavBar/container"
 import Home from "./pages/Home/component"
 import Book from "./pages/Book/container"
